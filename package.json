@@ -1,6 +1,6 @@
 {
   "name": "pipelining",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "HTTP pipelining client for the browser and NodeJS",
   "main": "index.js",
   "directories": {
