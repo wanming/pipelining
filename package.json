@@ -1,0 +1,38 @@
+{
+  "name": "pipelining",
+  "version": "1.0.0",
+  "description": "HTTP pipelining client for the browser and NodeJS",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node test/helpers/server",
+    "test": "mocha && npm run browser-test",
+    "browser-test": "npm build && mocha-phantomjs -p /usr/local/bin/phantomjs http://localhost:9999/test",
+    "build": "webpack test/browser/xhr.js ./test/browser/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanming/pipelining.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wanming/pipelining/issues"
+  },
+  "homepage": "https://github.com/wanming/pipelining#readme",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "es6-promise": "^4.0.5",
+    "lodash.assign": "^4.2.0"
+  }
+}
