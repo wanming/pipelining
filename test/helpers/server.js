@@ -20,6 +20,11 @@ var srv = http.createServer((req, res) => {
     const write = () => {
       const delay = parseInt(Math.random() * 5000, 10);
       n += 1;
+
+      if (n === 10) {
+        res.end(pipelining.pack({ tom: 'a' }), 500);
+        return Promise.resolve(true);
+      }
       if (n === 20) {
         res.end();
         return Promise.resolve(true);
