@@ -1,5 +1,5 @@
 # pipelining
-HTTP pipelining client for the browser and NodeJS
+Xhr stream client for the browser and NodeJS
 
 ### HOW TO USE
 
@@ -38,4 +38,3 @@ function (req, res) {
 ### TODO:
 1. node.js version
 1. headers support
-2. query string & form data

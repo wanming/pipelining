@@ -1,7 +1,7 @@
 {
   "name": "pipelining",
-  "version": "1.2.0",
-  "description": "HTTP pipelining client for the browser and NodeJS",
+  "version": "1.2.1",
+  "description": "xhr stream handler for the browser and NodeJS",
   "main": "index.js",
   "directories": {
     "test": "test"
