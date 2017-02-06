@@ -1,5 +1,5 @@
 # pipelining
-Xhr stream client for the browser and NodeJS
+Xhr chunked stream client for the browser and NodeJS
 
 ### HOW TO USE
 
