@@ -1,10 +1,11 @@
 'use strict';
 
-const pipelining = require('../../');
+const expect = require('chai').expect;
+const pipelining = require('../');
 
 function read(time) {
   let tmp = 0;
-  const reader = pipelining('/', { timeout: 2000 });
+  const reader = pipelining('http://localhost:9999/', { timeout: 2000 });
   let promise = reader.read();
 
   while (tmp < time) {
@@ -20,7 +21,7 @@ function read(time) {
 }
 
 describe('pipelining', function () {
-  this.timeout(30000);
+  this.timeout(20000);
 
   it('Get 1st partial correctly', function (done) {
     read(1).then(result => {
@@ -44,8 +45,7 @@ describe('pipelining', function () {
   });
 
   it('Get error when format error', function (done) {
-    read(7).then(console.log).catch(e => {
-      console.log(e.stack);
+    read(7).catch(e => {
       expect(e.message).to.eql('timeout');
       done();
     });

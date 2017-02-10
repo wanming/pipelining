@@ -18,17 +18,18 @@ var srv = http.createServer((req, res) => {
     let n = 0;
 
     const write = () => {
-      const delay = parseInt(Math.random() * 5000, 10);
+      let delay = n % 2 === 0 ? 0 : parseInt(Math.random() * 1000, 10);
       n += 1;
 
       if (n === 10) {
-        res.end(pipelining.pack({ tom: 'a' }), 500);
+        res.end('33333', 500);
         return Promise.resolve(true);
       }
-      if (n === 20) {
-        res.end();
-        return Promise.resolve(true);
+
+      if (n === 6) {
+        delay = 3200;
       }
+
       res.write(pipelining.pack(n));
       return Promise.delay(delay).then(write);
     };

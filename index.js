@@ -2,7 +2,7 @@
 
 const assign = require('lodash.assign');
 const utils = require('./lib/utils');
-const pipelining = require('./lib/xhr');
+const pipelining = require('./lib/');
 
 assign(pipelining, utils);
 

@@ -1,7 +1,7 @@
 {
   "name": "pipelining",
-  "version": "1.2.2",
-  "description": "xhr stream handler for the browser and NodeJS",
+  "version": "2.0.0",
+  "description": "xhr chunked stream handler for the browser and NodeJS",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node test/helpers/server",
     "test": "mocha && npm run browser-test",
-    "browser-test": "npm build && mocha-phantomjs -p /usr/local/bin/phantomjs http://localhost:9999/test",
+    "browser-test": "mocha-phantomjs -p /usr/local/bin/phantomjs http://localhost:9999/test",
     "build": "webpack ./webpack.config.js"
   },
   "repository": {
@@ -30,11 +30,14 @@
     "mocha": "^3.2.0",
     "webpack": "^1.14.0"
   },
+  "browser": {
+    "./lib/adapters/http.js": "./lib/adapters/xhr.js"
+  },
   "dependencies": {
     "bluebird": "^3.4.7",
-    "es6-promise": "^4.0.5",
     "lodash.assign": "^4.2.0",
     "lodash.clone": "^4.5.0",
-    "lodash.keys": "^4.2.0"
+    "lodash.keys": "^4.2.0",
+    "request": "^2.79.0"
   }
 }
