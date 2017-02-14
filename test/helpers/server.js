@@ -27,7 +27,7 @@ var srv = http.createServer((req, res) => {
       }
 
       if (n === 6) {
-        delay = 3200;
+        res.write('aaaa');
       }
 
       res.write(pipelining.pack(n));
@@ -41,6 +41,25 @@ var srv = http.createServer((req, res) => {
   if (req.url === '/test') {
     const indexHtml = fs.readFileSync(path.join(process.cwd(), 'test/browser/index.html')).toString();
     res.end(indexHtml);
+    return;
+  }
+
+  if (req.url === '/test2') {
+    res.writeHead(200, {
+      'Transfer-Encoding': 'chunked', 'Content-Type': 'text/html'
+    });
+
+    setTimeout(() => {
+      res.write(pipelining.pack('tom1'));
+    }, 100);
+
+    setTimeout(() => {
+      res.write(pipelining.pack('tom2'));
+    }, 120);
+
+    setTimeout(() => {
+      res.end();
+    }, 130);
     return;
   }
 

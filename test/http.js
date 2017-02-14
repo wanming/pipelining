@@ -3,9 +3,9 @@
 const expect = require('chai').expect;
 const pipelining = require('../');
 
-function read(time) {
+function read(time, options) {
   let tmp = 0;
-  const reader = pipelining('http://localhost:9999/', { timeout: 2000 });
+  const reader = pipelining('http://localhost:9999/', options);
   let promise = reader.read();
 
   while (tmp < time) {
@@ -46,7 +46,35 @@ describe('pipelining', function () {
 
   it('Get error when format error', function (done) {
     read(7).catch(e => {
-      expect(e.message).to.eql('timeout');
+      expect(e.message).to.eql('Format error');
+      done();
+    });
+  });
+
+  it('Done successfully', function (done) {
+    const reader = pipelining('http://localhost:9999/test2');
+    reader.read().then(() => {
+      return reader.read();
+    }).then(() => {
+      return reader.read();
+    }).then((doneResult) => {
+      expect(doneResult.done).to.eql(true);
+      done();
+    });
+  });
+
+  it('Abort successfully', function (done) {
+    const reader = pipelining('http://localhost:9999/test2');
+    reader.abort();
+    reader.read().catch(e => {
+      expect(e.message).to.eql('Aborted');
+      done();
+    });
+  });
+
+  it('Throw timeout after 0.5s', function (done) {
+    read(7, { timeout: 500 }).catch(e => {
+      expect(e.message).to.eql('Timeout');
       done();
     });
   });
