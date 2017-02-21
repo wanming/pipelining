@@ -1,6 +1,6 @@
 {
   "name": "pipelining",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "xhr chunked stream handler for the browser and NodeJS",
   "main": "index.js",
   "directories": {
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "bluebird": "^3.4.7",
+    "debug": "^2.6.1",
     "lodash.assign": "^4.2.0",
     "lodash.clone": "^4.5.0",
     "lodash.keys": "^4.2.0",
