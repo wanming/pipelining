@@ -1,6 +1,6 @@
 {
   "name": "pipelining",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "xhr chunked stream handler for the browser and NodeJS",
   "main": "index.js",
   "directories": {
