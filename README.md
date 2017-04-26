@@ -1,13 +1,24 @@
 # pipelining
-Xhr chunked stream client for the browser and NodeJS
+Xhr chunked stream client for the browser and node.js
 
-### HOW TO USE
+## Install
 
-#### front-end
+```shell
+$ npm install pipelining
+```
+
+## Usage
+
+Client (browser or node.js)
+
 ```javascript
 const pipelining = require('pipelining');
 
 const reader = pipelining('/test');
+
+function handle(data) {
+  console.log(data);
+}
 
 function read() {
   reader.read().then(partial => {
@@ -19,10 +30,11 @@ function read() {
   });
 }
 
-read();
+read()
 ```
 
-#### back-end
+Server
+
 ```javascript
 const pipelining = require('pipelining');
 // http handler
@@ -34,7 +46,3 @@ function (req, res) {
   res.end();
 }
 ```
-
-### TODO:
-1. node.js version
-1. headers support
